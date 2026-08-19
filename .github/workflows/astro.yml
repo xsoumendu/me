@@ -26,6 +26,8 @@ concurrency:
 
 env:
   BUILD_PATH: "." # default value when not using subfolders
+  SITE_URL: "https://xsoumendu.github.io"
+  BASE_PATH: "/me"
   # BUILD_PATH: subfolder
 
 jobs:
@@ -60,19 +62,14 @@ jobs:
           node-version: "24"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v6
-        with:
-          enablement: true
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+            --site "${{ env.SITE_URL }}" \
+            --base "${{ env.BASE_PATH }}"
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
