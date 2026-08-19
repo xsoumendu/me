@@ -1,0 +1,44 @@
+---
+import { resume } from '../data/resume';
+
+const { profile } = resume;
+---
+
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div>
+      <p class="section-label">Contact</p>
+      <h2>Build the next reliable thing.</h2>
+      <p class="contact__copy">Available for conversations around Generative AI products, enterprise architecture, Azure adoption, and engineering delivery.</p>
+      <div class="contact__actions">
+        <a class="button" href={`mailto:${profile.email}`}>Email Soumendu</a>
+        <a class="button button--quiet" href={profile.phoneHref}>{profile.phone}</a>
+      </div>
+    </div>
+    <div class="contact__facts">
+      <p><strong>{profile.location}</strong><span>Based in</span></p>
+      <p><strong>Azure certified</strong><span>AI, fundamentals, architecture, and development</span></p>
+      <a href="/resume.pdf" download>Download the complete PDF resume</a>
+    </div>
+  </div>
+  <footer>Soumendu Nandi <span>Data and Generative AI product engineering and architecture</span></footer>
+</section>
+
+<style>
+  .contact { background: var(--coral); padding: 6.5rem 1.5rem 0; }
+  .contact__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr); gap: clamp(2.5rem, 10vw, 10rem); width: min(1120px, 100%); margin: 0 auto; }
+  .contact :global(.section-label) { color: var(--ink); }
+  h2 { max-width: 680px; margin-bottom: 1.25rem; font-size: clamp(3rem, 7vw, 6.2rem); }
+  .contact__copy { max-width: 570px; font-size: 1.1rem; }
+  .contact__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .contact__actions :global(.button) { background: var(--ink); border-color: var(--ink); }
+  .contact__actions :global(.button--quiet) { background: transparent; color: var(--ink); }
+  .contact__facts { align-self: end; }
+  .contact__facts p { display: grid; gap: 0.25rem; padding: 1rem 0; border-top: 1px solid #a84038; }
+  .contact__facts strong { font-size: 1rem; }
+  .contact__facts span, .contact__facts a { font-size: 0.85rem; }
+  .contact__facts a { display: inline-block; margin-top: 0.7rem; font-weight: 800; }
+  footer { display: flex; justify-content: space-between; gap: 1rem; width: min(1120px, 100%); margin: 5rem auto 0; padding: 1.25rem 0; border-top: 1px solid #a84038; font-size: 0.82rem; font-weight: 800; }
+  footer span { color: #62241f; font-weight: 600; }
+  @media (max-width: 700px) { .contact { padding: 4.5rem 1.15rem 0; } .contact__inner { grid-template-columns: 1fr; } footer { flex-direction: column; margin-top: 3rem; } }
+</style>

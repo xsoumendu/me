@@ -1,0 +1,65 @@
+---
+import Contact from '../components/Contact.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import { resume } from '../data/resume';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Soumendu Nandi | Solution Architect" description={resume.profile.headline}>
+  <main class="page-shell">
+    <Hero />
+    <section class="summary section" id="profile">
+      <div class="section-inner summary__layout">
+        <div>
+          <p class="section-label">Professional profile</p>
+          <h2 class="section-heading">A practical architect for governed, scalable systems.</h2>
+        </div>
+        <div class="summary__copy">
+          {resume.summary.map((paragraph) => <p>{paragraph}</p>)}
+          <div class="summary__competencies">
+            {resume.competencies.map((competency) => <p>{competency}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+    <ExperienceTimeline />
+    <Skills />
+    <Projects />
+    <section class="credentials section" id="credentials">
+      <div class="section-inner credentials__layout">
+        <div>
+          <p class="section-label">Credentials</p>
+          <h2 class="section-heading">Architecture backed by practice and certification.</h2>
+        </div>
+        <div>
+          <h3>Microsoft certifications</h3>
+          <ul>{resume.certifications.map((certification) => <li>{certification}</li>)}</ul>
+          <h3>Education</h3>
+          <ul class="education">
+            {resume.education.map((item) => <li><strong>{item.qualification}</strong><span>{item.institution} / {item.year}</span></li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+    <Contact />
+  </main>
+</Layout>
+
+<style>
+  .summary { background: var(--paper); }
+  .summary__layout, .credentials__layout { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); gap: clamp(2.5rem, 8vw, 9rem); }
+  .summary__copy { font-size: 1.08rem; }
+  .summary__competencies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem 1.6rem; margin-top: 2.2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .summary__competencies p { margin: 0; color: var(--muted); font-size: 0.86rem; }
+  .credentials { background: var(--surface); }
+  .credentials h3 { margin: 0 0 1rem; color: var(--teal); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .credentials h3 + ul { margin: 0 0 2.5rem; padding: 0; list-style: none; }
+  .credentials li { padding: 0.8rem 0; border-top: 1px solid var(--line); }
+  .education { display: grid; gap: 0; }
+  .education li { display: grid; gap: 0.15rem; }
+  .education span { color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 720px) { .summary__layout, .credentials__layout { grid-template-columns: 1fr; } .summary__competencies { grid-template-columns: 1fr; } }
+</style>

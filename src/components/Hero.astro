@@ -1,0 +1,76 @@
+---
+import { resume } from '../data/resume';
+
+const { profile } = resume;
+---
+
+<section class="hero" id="top">
+  <div class="hero__texture"></div>
+  <div class="hero__inner">
+    <header class="hero__nav">
+      <a class="hero__wordmark" href="#top" aria-label="Soumendu Nandi home">SN<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Capabilities</a>
+        <a href="#engagements">Engagements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero__content">
+      <div class="hero__copy">
+        <p class="eyebrow">Solution architect / product engineer</p>
+        <h1>{profile.name}</h1>
+        <p class="hero__headline">{profile.headline}</p>
+        <p class="hero__subheadline">{profile.subheadline}</p>
+        <div class="hero__actions">
+          <a class="button" href="#contact">Start a conversation</a>
+          <a class="button button--quiet" href="/resume.pdf" download>Download resume</a>
+        </div>
+      </div>
+
+      <aside class="hero__signal" aria-label="Professional profile">
+        <img class="hero__photo" src="/profile.jpeg" alt="Soumendu Nandi" width="160" height="160" />
+        <div class="hero__signal-copy">
+          <p>17+ years</p>
+          <span>Enterprise engineering and architecture</span>
+        </div>
+        <div class="hero__signal-copy">
+          <p>{profile.location}</p>
+          <span>Working across regulated domains</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; min-height: min(780px, 100vh); background: var(--paper); }
+  .hero__texture { position: absolute; inset: 0; opacity: 0.8; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, #000 0%, transparent 92%); }
+  .hero__inner { position: relative; width: min(1240px, 100%); margin: 0 auto; padding: 1.5rem 2.2rem 4.4rem; }
+  .hero__nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .hero__wordmark { color: var(--ink); font-family: var(--display); font-size: 1.5rem; font-weight: 900; text-decoration: none; }
+  .hero__wordmark span { color: var(--coral); }
+  .hero__nav nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1.1rem 1.6rem; }
+  .hero__nav nav a { color: var(--muted); font-size: 0.84rem; font-weight: 700; text-decoration: none; }
+  .hero__nav nav a:hover { color: var(--teal); }
+  .hero__content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 0.43fr); gap: clamp(2.5rem, 8vw, 9rem); align-items: end; padding-top: clamp(7rem, 15vh, 12rem); }
+  h1 { max-width: 780px; margin: 0.8rem 0 1.25rem; font-size: clamp(3.6rem, 10vw, 8.5rem); letter-spacing: 0; }
+  .hero__headline { max-width: 680px; margin-bottom: 0.5rem; font-size: clamp(1.25rem, 2.3vw, 2rem); font-weight: 700; line-height: 1.2; }
+  .hero__subheadline { color: var(--muted); font-size: 1rem; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .hero__signal { padding: 1.4rem; border-top: 7px solid var(--coral); background: var(--surface); box-shadow: 12px 12px 0 var(--lime); }
+  .hero__photo { display: block; width: 100px; height: 100px; margin-bottom: 2.2rem; border: 4px solid var(--teal); border-radius: 50%; object-fit: cover; object-position: center; }
+  .hero__signal-copy { padding-top: 1rem; border-top: 1px solid var(--line); }
+  .hero__signal-copy + .hero__signal-copy { margin-top: 1rem; }
+  .hero__signal-copy p { margin-bottom: 0.1rem; font-size: 1.05rem; font-weight: 800; }
+  .hero__signal-copy span { color: var(--muted); font-size: 0.84rem; }
+  @media (max-width: 760px) {
+    .hero { min-height: auto; }
+    .hero__inner { padding: 1.1rem 1.15rem 4rem; }
+    .hero__nav { align-items: flex-start; }
+    .hero__nav nav { display: none; }
+    .hero__content { grid-template-columns: 1fr; gap: 3.5rem; padding-top: 6.5rem; }
+    .hero__signal { width: min(100%, 380px); }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import { resume } from '../data/resume';
+---
+
+<section class="section experience" id="experience">
+  <div class="section-inner">
+    <p class="section-label">Career history</p>
+    <h2 class="section-heading">Architecting delivery, not just diagrams.</h2>
+    <div class="timeline">
+      {resume.experience.map((role, index) => (
+        <article class="timeline__entry">
+          <div class="timeline__marker" aria-hidden="true">0{index + 1}</div>
+          <div class="timeline__meta">
+            <p>{role.period}</p>
+            <span>{role.location}</span>
+          </div>
+          <div class="timeline__content">
+            <h3>{role.company}</h3>
+            <p class="timeline__title">{role.title}</p>
+            <ul>
+              {role.highlights.map((highlight) => <li>{highlight}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience { background: var(--surface); }
+  .timeline { border-top: 1px solid var(--line); }
+  .timeline__entry { display: grid; grid-template-columns: 72px minmax(160px, 0.42fr) minmax(0, 1fr); gap: 1.5rem; padding: 2.1rem 0; border-bottom: 1px solid var(--line); }
+  .timeline__marker { display: grid; width: 42px; height: 42px; place-items: center; background: var(--lime); font-size: 0.72rem; font-weight: 900; }
+  .timeline__meta p { margin-bottom: 0.15rem; font-size: 0.9rem; font-weight: 800; }
+  .timeline__meta span { color: var(--muted); font-size: 0.84rem; }
+  .timeline__content h3 { margin-bottom: 0.25rem; font-size: 1.7rem; }
+  .timeline__title { margin-bottom: 1.15rem; color: var(--teal); font-weight: 800; }
+  .timeline__content ul { display: grid; gap: 0.55rem; margin: 0; padding-left: 1.1rem; color: var(--muted); }
+  .timeline__content li::marker { color: var(--coral); }
+  @media (max-width: 720px) {
+    .timeline__entry { grid-template-columns: 45px 1fr; gap: 1rem; }
+    .timeline__meta { grid-column: 2; grid-row: 1; }
+    .timeline__content { grid-column: 2; }
+    .timeline__marker { grid-row: span 2; width: 34px; height: 34px; }
+  }
+</style>
