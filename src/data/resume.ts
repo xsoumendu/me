@@ -2,8 +2,8 @@ export const resume = {
 	profile: {
 		name: 'Soumendu Nandi',
 		location: 'Kolkata, India',
-		phone: '+91 97487 06116',
-		phoneHref: 'tel:+919748706116',
+		phone: '+91 XXXXXXXXXX',
+		phoneHref: 'tel:+XXXXXXXXXXX',
 		email: 'Soumendu.nandi@gmail.com',
 		headline: 'Data and Generative AI Product Engineering and Architecture',
 		subheadline: 'Python, .NET, Azure Cloud Adoption, and Azure DevOps',
