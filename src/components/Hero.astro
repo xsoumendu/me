@@ -2,6 +2,9 @@
 import { resume } from '../data/resume';
 
 const { profile } = resume;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <section class="hero" id="top">
@@ -25,12 +28,12 @@ const { profile } = resume;
         <p class="hero__subheadline">{profile.subheadline}</p>
         <div class="hero__actions">
           <a class="button" href="#contact">Start a conversation</a>
-          <a class="button button--quiet" href="/resume.pdf" download>Download resume</a>
+          <a class="button button--quiet" href={`${baseUrl}resume.pdf`} download>Download resume</a>
         </div>
       </div>
 
       <aside class="hero__signal" aria-label="Professional profile">
-        <img class="hero__photo" src="/profile.jpeg" alt="Soumendu Nandi" width="160" height="160" />
+        <img class="hero__photo" src={`${baseUrl}profile.jpeg`} alt="Soumendu Nandi" width="160" height="160" />
         <div class="hero__signal-copy">
           <p>17+ years</p>
           <span>Enterprise engineering and architecture</span>
